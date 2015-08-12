@@ -42,7 +42,6 @@ HEADERS  += \
     newboardoptionsdialog.h \
     newboardoptions.h \
     dialogmanager.h \
-    statecolors.h \
     zoomer.h \
     mainwindow.h
 
