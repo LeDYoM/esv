@@ -12,7 +12,6 @@ class ESVClient;
 class ESVGraphicsView;
 class NewBoardOptions;
 class NewBoardOptionsDialog;
-class StateColors;
 class Zoomer;
 
 class MainWindow : public QMainWindow
@@ -58,7 +57,6 @@ private:
     void addMainWidgets();
     void addMenu();
     QWidget *addOptionsWidget(QWidget *parent);
-    void addStateColors();
     QWidget *windowSurface;
     ESVGraphicsView *view;
     MainScene *mScene;
@@ -66,7 +64,6 @@ private:
     QSlider *boardSlider;
     NewBoardOptionsDialog *newBoardOptionsDialog;
     NewBoardOptions *newBoardOptions;
-    StateColors *stateColors;
     Zoomer *zoomer;
 };
 

@@ -3,23 +3,19 @@
 
 #include <QGraphicsItem>
 
-class Tile : public QObject
+class Tile : public QGraphicsRectItem
 {
 public:
 
-    Tile(QObject *parent,QAbstractGraphicsShapeItem *graphItem, const QPoint point_, int sContent);
+    Tile(QGraphicsItem *graphItemParent, const QRectF &rect, const QPoint point_, int sContent);
 	virtual ~Tile();
 
 	void setContent(int content_);
     int getContent() const { return content; }
     const QPoint &getPoint() const { return point; }
-    QGraphicsItem *item() const { return _item; }
-
-    void reSize(const QSizeF &tileSize);
 private:
     QPoint point;
     int content;
-    QAbstractGraphicsShapeItem *_item;
 };
 
 #endif // TILE_H

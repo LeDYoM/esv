@@ -18,6 +18,8 @@ public:
     void updateZoom();
     void setZoom(const QVector2D &nv);
 
+    virtual void mousePressEvent(QMouseEvent *event);
+
 public Q_SLOTS:
     void adjustToWindowZoom();
 

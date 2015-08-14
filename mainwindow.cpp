@@ -5,7 +5,6 @@
 #include "esvgraphicsview.h"
 #include "newboardoptions.h"
 #include "newboardoptionsdialog.h"
-#include "statecolors.h"
 #include "zoomer.h"
 
 #include <QLabel>
@@ -21,14 +20,12 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), windowSurface{nullptr}, view{nullptr}, mScene{nullptr},
-      newBoardOptionsDialog{nullptr},stateColors{nullptr},zoomer{nullptr}
+      newBoardOptionsDialog{nullptr},zoomer{nullptr}
 {
     fileDialogManager = new DialogManager(this);
     newBoardOptions = new NewBoardOptions(this);
-    stateColors = new StateColors(this);
     zoomer = new Zoomer({0.01,0.02,0.05,0.1,0.15,0.25,0.33,0.5,0.75,0.85,
                         1,1.15,1.25,1.33,1.5,1.75,1.85,2,2.5,3,4,5},10,this);
-    addStateColors();
     addMenu();
     addMainWidgets();
 }
@@ -227,11 +224,6 @@ void MainWindow::addMenu()
     QObject::connect(this,SIGNAL(zoomIn()),this,SLOT(onZoomIn()));
     QObject::connect(this,SIGNAL(zoomOut()),this,SLOT(onZoomOut()));
     QObject::connect(this,SIGNAL(resetZoom()),this,SLOT(onResetZoom()));
-}
-
-void MainWindow::addStateColors()
-{
-    stateColors->setColor(QColor(255,0,0),1);
 }
 
 void MainWindow::onActiveBoardModelChanged(const BoardModel * const bModel)

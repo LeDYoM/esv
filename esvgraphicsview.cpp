@@ -3,13 +3,16 @@
 #include <QResizeEvent>
 #include <QGraphicsScene>
 #include <QGLWidget>
+#include <QPointer>
+
+#include "tile.h"
 
 ESVGraphicsView::ESVGraphicsView(QWidget *parent) : QGraphicsView(parent)
 {
     QGLWidget *mw = new QGLWidget();
 //    mw->setAutoFillBackground(false);
     mw->setAcceptDrops(false);
-    setViewport(mw);
+    setViewport(mw);  
 }
 
 ESVGraphicsView::~ESVGraphicsView()
@@ -58,5 +61,23 @@ void ESVGraphicsView::setZoom(const QVector2D &nv)
         _zoom = nv;
         adjustToWindowZoom();
     }
+}
+
+void ESVGraphicsView::mousePressEvent(QMouseEvent *event)
+{
+    qDebug() << "Position:" <<event->pos();
+
+    // Detect if the click is in the view.
+//    QPoint remapped = mapFromParent( event->pos() );
+//    if ( rect().contains( remapped ) )
+    {
+//         QPointF mousePoint = mapToScene( remapped );
+//         qDebug() << "Scene point:" << mousePoint << remapped;
+    }
+
+    QGraphicsItem *item = itemAt(event->pos().x(),event->pos().y());
+
+    Q_ASSERT_X(item,Q_FUNC_INFO,"item is null");
+
 }
 

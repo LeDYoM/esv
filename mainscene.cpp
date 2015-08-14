@@ -43,13 +43,11 @@ void MainScene::doBoardViewUpdate(const BoardModel *bModel)
                 if (!(cont%1000))
                     qDebug() << "Tile added: "<<cont;
                 ++cont;
-                auto rectItem = this->addRect(
-                            QRectF(calculatePointForTile(point),tileSize));
-                Tile *tile = new Tile(this,rectItem,point,element);
+                QRectF rect = QRectF(calculatePointForTile(point),tileSize);
+                Tile *tile = new Tile(nullptr,rect,point,element);
                 (*tiles)[x][y] = tile;
 
-//                addItem(rectItem);
-//                tile->reSize(tileSize);
+                addItem(tile);
             }
             else
             {
